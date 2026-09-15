@@ -1,0 +1,168 @@
+.netflix-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  min-height: 68px;
+  align-items: center;
+  gap: 28px;
+  box-sizing: border-box;
+  padding: 0 4vw;
+  color: #e5e5e5;
+  background: linear-gradient(180deg, rgba(20, 20, 20, 0.98), rgba(20, 20, 20, 0.88));
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.netflix-navbar__brand {
+  color: #e50914;
+  font-size: clamp(1.45rem, 2.1vw, 2rem);
+  font-weight: 900;
+  letter-spacing: -0.1em;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.netflix-navbar__links,
+.netflix-navbar__actions {
+  display: flex;
+  align-items: center;
+}
+
+.netflix-navbar__links {
+  flex: 1;
+  gap: clamp(12px, 1.5vw, 22px);
+}
+
+.netflix-navbar__links a,
+.netflix-navbar__kids-link {
+  color: #e5e5e5;
+  font-size: 0.86rem;
+  text-decoration: none;
+  transition: color 180ms ease;
+}
+
+.netflix-navbar__links a:hover,
+.netflix-navbar__links a:focus-visible,
+.netflix-navbar__kids-link:hover,
+.netflix-navbar__kids-link:focus-visible,
+.netflix-navbar__links a.is-active {
+  color: #fff;
+}
+
+.netflix-navbar__links a.is-active {
+  font-weight: 700;
+}
+
+.netflix-navbar__actions {
+  gap: 16px;
+}
+
+.netflix-navbar__icon-button,
+.netflix-navbar__profile,
+.netflix-navbar__browse-button {
+  display: inline-flex;
+  align-items: center;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+}
+
+.netflix-navbar__icon-button {
+  width: 22px;
+  height: 22px;
+  padding: 0;
+}
+
+.netflix-navbar__icon-button svg {
+  width: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+.netflix-navbar__profile {
+  gap: 8px;
+  padding: 0;
+}
+
+.netflix-navbar__profile > span:first-child {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border-radius: 4px;
+  color: #fff;
+  background: linear-gradient(135deg, #e50914 0 45%, #272727 45% 55%, #e50914 55%);
+  font-size: 0.83rem;
+  font-weight: 800;
+}
+
+.netflix-navbar__caret {
+  font-size: 0.65rem;
+}
+
+.netflix-navbar__browse-button {
+  display: none;
+  gap: 6px;
+  padding: 0;
+  font-size: 0.9rem;
+}
+
+.netflix-navbar button:focus-visible,
+.netflix-navbar a:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
+}
+
+@media (max-width: 760px) {
+  .netflix-navbar {
+    min-height: 56px;
+    gap: 18px;
+  }
+
+  .netflix-navbar__browse-button {
+    display: inline-flex;
+  }
+
+  .netflix-navbar__links {
+    position: absolute;
+    top: 56px;
+    left: 0;
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 8px 4vw;
+    box-sizing: border-box;
+    background: #141414;
+    box-shadow: 0 8px 14px rgba(0, 0, 0, 0.45);
+  }
+
+  .netflix-navbar__links.is-open {
+    display: flex;
+  }
+
+  .netflix-navbar__links a {
+    padding: 12px 0;
+  }
+
+  .netflix-navbar__kids-link {
+    display: none;
+  }
+}
+
+@media (max-width: 430px) {
+  .netflix-navbar__actions {
+    margin-left: auto;
+    gap: 12px;
+  }
+
+  .netflix-navbar__profile .netflix-navbar__caret,
+  .netflix-navbar__icon-button:last-of-type {
+    display: none;
+  }
+}
