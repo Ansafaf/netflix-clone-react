@@ -1,78 +1,107 @@
-# React + TypeScript + Vite
+# Netflix Clone – React Assignment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A Netflix-inspired movie and series browsing application built as part of my **Brocamp Week 2 React assignment**.
 
-Currently, two official plugins are available:
+The project focuses on applying core React concepts such as component-based architecture, state management, props, routing, reusable components, and dynamic data rendering.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Features
 
-## React Compiler
+* Browse movies and series
+* Display movie/series information dynamically
+* Movie and series detail pages
+* Dynamic routing using React Router
+* Reusable React components
+* State management using React hooks
+* Search/filter functionality
+* Responsive user interface
+* Clean and structured component architecture
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## 🛠️ Technologies Used
 
-Note: This will impact Vite dev & build performances.
-You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
+* React
+* JavaScript
+* JSX
+* React Router
+* HTML5
+* CSS3
+* Vite
+* Git & GitHub
 
-## Expanding the ESLint configuration
+## 📂 Project Structure
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```text
+src/
+├── components/
+├── pages/
+├── assets/
+├── types/
+├── App.jsx
+├── main.jsx
+└── ...
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+The project is organized into reusable components and pages to keep the application maintainable and scalable.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🧠 React Concepts Practiced
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+This assignment helped me practice and strengthen:
 
+* Components
+* Props
+* `useState`
+* `useEffect`
+* `useReducer`
+* `useRef`
+* Conditional rendering
+* List rendering
+* Event handling
+* React Router
+* Dynamic routes
+* `useParams`
+* Reusable components
+* Component composition
+* State and data flow
+
+## 📌 Purpose of the Project
+
+The main goal of this assignment is not to create an exact copy of Netflix, but to recreate the required functionality and user experience while demonstrating a proper understanding of React concepts and project structure.
+
+## ⚙️ Installation
+
+Clone the repository:
+
+```bash
+git clone <repository-url>
 ```
+
+Navigate to the project:
+
+```bash
+cd <project-folder>
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+The application will then be available at the local development URL provided by Vite.
+
+## 📚 Learning Outcome
+
+Through this project, I gained practical experience in building a React application from scratch and learned how different React concepts work together in a real-world project.
+
+The assignment also helped me understand how to structure a frontend application for better readability, reusability, and maintainability.
+
+## 👨‍💻 Author
+
+**Ansaf**
+
+Brocamp – React Learning Journey
