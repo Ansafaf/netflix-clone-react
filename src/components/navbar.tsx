@@ -6,8 +6,8 @@ const navigationItems = ['Home', 'TV Shows', 'Movies', 'New & Popular', 'My List
 type NavigationItem = (typeof navigationItems)[number]
 
 type NavbarProps = {
-  activeItem?: NavigationItem
-  onNavigate?: (item: NavigationItem) => void
+  activeItem ?: NavigationItem
+  onNavigate ?: (item: NavigationItem) => void
 }
 
 function SearchIcon() {
@@ -26,7 +26,7 @@ function BellIcon() {
   )
 }
 
-/** A responsive, dependency-free navigation bar for the Netflix clone. */
+
 function Navbar({ activeItem = 'Home', onNavigate }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
