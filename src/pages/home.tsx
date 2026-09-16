@@ -8,8 +8,11 @@ import Navbar from '../components/navbar'
 import TrendingSection from '../components/TrendingSection'
 import { useAuth } from '../context/auth'
 import type { Movie } from '../types/movieType'
+import { getMovies } from '../services/movieApi'
+import { useEffect, useState } from 'react'
 
-const trending: Movie[] = [
+
+const movies: Movie[] = [
   { id: 1, title: 'Ishq Vishk', image: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=420&q=80' },
   { id: 2, title: 'Dhamal', image: 'https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=420&q=80' },
   { id: 3, title: 'Operation', image: 'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=420&q=80' },
@@ -34,15 +37,22 @@ const questions: Faq[] = [
 ]
 
 function Home() {
-  const { isAuthenticated } = useAuth()
+  const { isAuthenticated } = useAuth();
+  // const [movies, setMovies] = useState([]);
 
+  // useEffect(()=>{
+  //   getMovies()
+  //   .then(setMovies)
+  //   .then((m)=> console.log(m))
+  //   .catch((err)=> console.log(err));
+  // },[]);
   return <main className="home-page">
     <div className="home-page__site-name">Netflix Clone</div>
     {isAuthenticated && <Navbar activeItem="Home" />}
     <Hero />
     <div className="home-curve" aria-hidden="true" />
     <div className="home-content">
-      <TrendingSection movies={trending} />
+      <TrendingSection movies={movies} />
       <BenefitsSection benefits={benefits} />
       <FaqSection questions={questions} />
       <section className="home-cta"><EmailForm compact /></section>

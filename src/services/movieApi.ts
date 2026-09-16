@@ -1,5 +1,5 @@
 
-const base_url = 'https://api.themoviedb.org/3';
+const base_url = 'https://my-json-server.typicode.com/horizon-code-academy/fake-movies-api/movies';
 
 const token = import.meta.env.VITE_TMDB_TOKEN;
 
