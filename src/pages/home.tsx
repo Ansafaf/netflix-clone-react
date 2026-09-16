@@ -1,6 +1,5 @@
 import './home.css'
 import BenefitsSection, { type Benefit } from '../components/BenefitsSection'
-import EmailForm from '../components/EmailForm'
 import FaqSection, { type Faq } from '../components/FaqSection'
 import Footer from '../components/footer'
 import Hero from '../components/Hero'
@@ -8,8 +7,8 @@ import Navbar from '../components/navbar'
 import TrendingSection from '../components/TrendingSection'
 import { useAuth } from '../context/auth'
 import type { Movie } from '../types/movieType'
-import { getMovies } from '../services/movieApi'
-import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { ROUTES } from '../constants/routes'
 
 
 const movies: Movie[] = [
@@ -38,14 +37,6 @@ const questions: Faq[] = [
 
 function Home() {
   const { isAuthenticated } = useAuth();
-  // const [movies, setMovies] = useState([]);
-
-  // useEffect(()=>{
-  //   getMovies()
-  //   .then(setMovies)
-  //   .then((m)=> console.log(m))
-  //   .catch((err)=> console.log(err));
-  // },[]);
   return <main className="home-page">
     <div className="home-page__site-name">Netflix Clone</div>
     {isAuthenticated && <Navbar activeItem="Home" />}
@@ -55,7 +46,12 @@ function Home() {
       <TrendingSection movies={movies} />
       <BenefitsSection benefits={benefits} />
       <FaqSection questions={questions} />
-      <section className="home-cta"><EmailForm compact /></section>
+      <section className="home-cta" aria-label="Create an account">
+        <p>Ready to watch?</p>
+        <Link className="home-register-link" to={ROUTES.REGISTER}>
+          Create an account <span aria-hidden="true">›</span>
+        </Link>
+      </section>
       <Footer />
     </div>
   </main>

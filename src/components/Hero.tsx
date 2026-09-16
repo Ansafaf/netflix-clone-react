@@ -1,4 +1,5 @@
-import EmailForm from './EmailForm'
+import { Link } from 'react-router-dom'
+import { ROUTES } from '../constants/routes'
 
 type HeroProps = {
   title: string
@@ -15,7 +16,9 @@ function Hero({
       <div className="home-hero__content">
         <h1>{title}</h1>
         <p className="home-hero__price">{description}</p>
-        <EmailForm />
+        <Link className="home-register-link" to={ROUTES.REGISTER}>
+          Create an account <span aria-hidden="true">›</span>
+        </Link>
       </div>
     </section>
   )
