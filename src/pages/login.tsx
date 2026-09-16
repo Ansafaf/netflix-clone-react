@@ -1,6 +1,9 @@
 
 
 import { useState, type FormEvent } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { ROUTES } from '../constants/routes'
+import { useAuth } from '../context/auth'
 import './login.css'
 
 function ChevronDown() {
@@ -10,10 +13,16 @@ function ChevronDown() {
 function Login() {
   const [contact, setContact] = useState('')
   const [submitted, setSubmitted] = useState(false)
+  const { login } = useAuth()
+  const navigate = useNavigate()
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     setSubmitted(true)
+    if (contact.trim()) {
+      login(contact.trim())
+      navigate(ROUTES.HOME)
+    }
   }
 
   return (
