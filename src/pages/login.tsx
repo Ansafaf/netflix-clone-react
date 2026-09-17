@@ -9,13 +9,15 @@ import './login.css'
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState("");
-  const [submitted, setSubmitted] = useState(false)
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError]= useState('');
   const { login } = useAuth()
   const navigate = useNavigate()
 
   const handleSubmit = async(event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     setSubmitted(true)
+    setError('');
     if(!email.trim() || !password.trim()) return
 
     try{
@@ -24,6 +26,7 @@ function Login() {
     }
     catch(err){
       console.log(err);
+      setError(`Invalid email or password`);
     }
   }
 
@@ -50,7 +53,11 @@ function Login() {
               setSubmitted(false);
             }}/>
           </label>
+
           {submitted && !email.trim() && <p id="contact-error" className="login-page__error" role="alert">Please enter your email</p>}
+          {submitted && !password.trim() && <p id="contact-error" className="login-page__error" role="alert">Please enter your password</p>}
+          {error && <p className="login-page__error"
+              role="alert">{error}</p>}
           <button className="login-page__continue" type="submit">Continue</button>
         </form>
 

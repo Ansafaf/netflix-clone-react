@@ -13,10 +13,11 @@ type FormValues = {
 const initialValues: FormValues = { name: '', email: '', password: '' }
 
 function Register() {
-  const [values, setValues] = useState<FormValues>(initialValues)
-  const [submitted, setSubmitted] = useState(false)
-  const { login } = useAuth()
+  const [values, setValues] = useState<FormValues>(initialValues);
+  const [submitted, setSubmitted] = useState(false);
+  const [error , setError] = useState('');
   const navigate = useNavigate()
+  const {register} = useAuth();
 
   const updateField = (field: keyof FormValues, value: string) => {
     setValues((current)=> ({...current, [field]:value}));
@@ -24,13 +25,30 @@ function Register() {
   }
   const isValid = Boolean(values.name.trim()) && /^\S+@\S+\.\S+$/.test(values.email) && values.password.length >= 6;
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setSubmitted(true);
-    if (isValid) {
-      login(values.email)
-      navigate(ROUTES.HOME)
+    setError('');
+
+
+    if(!values.email.trim()){
+      setError('Please enter your email');
+      return;
     }
+    if(!values.password){
+      setError('Please enter your password');
+      return;
+    }
+
+    try{
+      await register(values.email.trim(), values.password);
+      navigate(ROUTES.HOME);
+    }
+    catch(err){
+      console.log(err);
+      setError('unable to create account');
+    }
+
   }
   
   return (
