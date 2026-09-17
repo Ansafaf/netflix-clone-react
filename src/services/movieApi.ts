@@ -21,6 +21,6 @@ export const getMovies = async()=>{
     }
 
     const data = await response.json();
-    return data.results
+    return data.results;
 }
 
