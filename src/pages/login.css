@@ -1,23 +1,20 @@
-.login-page { min-height: 100svh; color: #fff; background: radial-gradient(ellipse 55% 80% at 17% 17%, rgba(115, 17, 20, .42), transparent 72%), linear-gradient(135deg, #250304 0%, #180000 50%, #0b0000 100%); font-family: Arial, Helvetica, sans-serif; text-align: left; }
-.login-page__header { display: flex; height: 106px; align-items: center; padding: 0 clamp(28px, 7.4vw, 120px); border-bottom: 1px solid rgba(255,255,255,.14); }
-.login-page__brand { color: #e50914; font-size: clamp(2rem, 2.55vw, 2.65rem); font-weight: 900; letter-spacing: -.1em; line-height: 1; text-decoration: none; }
-.login-page__content { width: min(440px, calc(100% - 48px)); margin: 35px auto 0; }
-.login-page__form h1 { margin: 0; color: #fff; font-size: clamp(1.7rem, 2.05vw, 2.05rem); font-weight: 700; letter-spacing: 0; line-height: 1.18; }
-.login-page__subtitle { margin: 9px 0 23px; color: #d0c9c9; font-size: 1.05rem; }
-.login-page__field input { width: 100%; height: 56px; box-sizing: border-box; padding: 0 15px; border: 1px solid #777; border-radius: 4px; outline: none; color: #fff; background: rgba(24,24,24,.88); font: inherit; }
-.login-page__field input::placeholder { color: #c3c3c3; opacity: 1; }
-.login-page__field input:focus { border-color: #fff; outline: 2px solid #fff; outline-offset: 2px; }
-.login-page__field input[aria-invalid='true'] { border-color: #eb3942; }
-.login-page__error { margin: 8px 0 0; color: #ff9a9f; font-size: .83rem; }
-.login-page__continue { width: 100%; min-height: 48px; margin-top: 12px; border: 0; border-radius: 4px; color: #fff; background: #e50914; cursor: pointer; font: inherit; font-weight: 700; transition: background-color 160ms ease; }
-.login-page__continue:hover { background: #c11119; }
-.login-page__continue:focus-visible, .login-page__brand:focus-visible, .login-page__help summary:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
-.login-page__help { margin-top: 47px; }
-.login-page__help summary { display: inline-flex; align-items: center; gap: 3px; cursor: pointer; font-size: .94rem; list-style: none; }
-.login-page__help summary::-webkit-details-marker { display: none; }
-.login-page__help summary svg { width: 18px; fill: none; stroke: currentColor; stroke-width: 2; }
-.login-page__help[open] summary svg { transform: rotate(180deg); }
-.login-page__help p { max-width: 360px; margin: 12px 0 0; color: #b8b1b1; font-size: .85rem; line-height: 1.45; }
-.login-page__recaptcha { margin-top: 37px; color: #9e9494; font-size: .76rem; line-height: 1.4; }
+.login-page { position: relative; min-height: 100svh; overflow: hidden; color: #fff; background: #080808; font-family: Arial, Helvetica, sans-serif; text-align: left; }
+.login-page::before { position: absolute; inset: 0; z-index: 0; background: radial-gradient(ellipse 70% 74% at 4% 0%, rgba(168, 19, 28, .36), transparent 68%), radial-gradient(ellipse 48% 58% at 100% 100%, rgba(97, 8, 12, .32), transparent 72%), linear-gradient(120deg, #160305 0%, #0c0c0c 48%, #070707 100%); content: ''; }
+.login-page__header, .login-page__content { position: relative; z-index: 1; }
+.login-page__header { display: flex; height: 88px; align-items: center; justify-content: space-between; padding: 0 clamp(24px, 6vw, 96px); border-bottom: 1px solid rgba(255,255,255,.11); }
+.login-page__brand { color: #e50914; font-size: clamp(1.9rem, 2.55vw, 2.55rem); font-weight: 900; letter-spacing: -.1em; line-height: 1; text-decoration: none; }
+.login-page__signup { margin: 0; color: #b8b8b8; font-size: .9rem; }
+.login-page__signup a { color: #fff; font-weight: 700; text-decoration: none; }.login-page__signup a:hover { text-decoration: underline; }
+.login-page__content { width: min(440px, calc(100% - 48px)); margin: clamp(44px, 9vh, 94px) auto 48px; }
+.login-page__form { padding: clamp(28px, 4vw, 42px); border: 1px solid rgba(255,255,255,.14); border-radius: 8px; background: rgba(16,16,16,.77); box-shadow: 0 24px 60px rgba(0,0,0,.42); backdrop-filter: blur(12px); }
+.login-page__eyebrow { margin: 0 0 9px; color: #e50914; font-size: .72rem; font-weight: 700; letter-spacing: .14em; }
+.login-page__form h1 { margin: 0; color: #fff; font-size: clamp(1.8rem, 2.4vw, 2.15rem); font-weight: 700; letter-spacing: -.03em; line-height: 1.16; }
+.login-page__intro { margin: 12px 0 27px; color: #c4c4c4; font-size: .96rem; line-height: 1.45; }
+.login-page__field { display: grid; gap: 8px; color: #e3e3e3; font-size: .84rem; font-weight: 700; }
+.login-page__field input { width: 100%; height: 54px; padding: 0 14px; border: 1px solid #777; border-radius: 4px; outline: none; color: #fff; background: rgba(28,28,28,.96); font: inherit; font-weight: 400; }
+.login-page__field input::placeholder { color: #a7a7a7; opacity: 1; }.login-page__field input:focus { border-color: #fff; outline: 2px solid #fff; outline-offset: 2px; }.login-page__field input[aria-invalid='true'] { border-color: #eb3942; }
+.login-page__error { margin: 8px 0 0; color: #ff9a9f; font-size: .83rem; }.login-page__continue { width: 100%; min-height: 52px; margin-top: 20px; border: 0; border-radius: 4px; color: #fff; background: #e50914; cursor: pointer; font: inherit; font-weight: 700; transition: background-color 160ms ease, transform 160ms ease; }.login-page__continue:hover { background: #c11119; transform: translateY(-1px); }
+.login-page__continue:focus-visible, .login-page__brand:focus-visible, .login-page__signup a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+.login-page__recaptcha { margin: 22px 4px 0; color: #888; font-size: .76rem; line-height: 1.45; text-align: center; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
-@media (max-width: 560px) { .login-page__header { height: 72px; } .login-page__content { margin-top: 52px; } .login-page__help { margin-top: 36px; } }
+@media (max-width: 560px) { .login-page__header { height: 72px; padding: 0 20px; }.login-page__signup { font-size: .8rem; }.login-page__content { width: min(100% - 32px, 440px); margin-top: 38px; }.login-page__form { padding: 27px 22px; }.login-page__recaptcha { margin-top: 19px; } }

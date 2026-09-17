@@ -1,52 +1,59 @@
 
 
 import { useState, type FormEvent } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { ROUTES } from '../constants/routes'
 import { useAuth } from '../context/auth'
 import './login.css'
 
-function ChevronDown() {
-  return <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" /></svg>
-}
-
 function Login() {
-  const [contact, setContact] = useState('')
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState("");
   const [submitted, setSubmitted] = useState(false)
   const { login } = useAuth()
   const navigate = useNavigate()
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async(event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     setSubmitted(true)
-    if (contact.trim()) {
-      login(contact.trim())
-      navigate(ROUTES.HOME)
+    if(!email.trim() || !password.trim()) return
+
+    try{
+      await login(email.trim(), password);
+      navigate(ROUTES.HOME);
+    }
+    catch(err){
+      console.log(err);
     }
   }
 
   return (
     <main className="login-page">
       <header className="login-page__header">
-        <a className="login-page__brand" href="/" aria-label="Netflix home">NETFLIX</a>
+        <Link className="login-page__brand" to={ROUTES.HOME} aria-label="Netflix home">NETFLIX</Link>
+        <p className="login-page__signup">New to Netflix? <Link to={ROUTES.REGISTER}>Sign up now.</Link></p>
       </header>
 
       <section className="login-page__content" aria-labelledby="login-title">
         <form className="login-page__form" onSubmit={handleSubmit} noValidate>
-          <h1 id="login-title">Enter your info to sign in</h1>
-          <p className="login-page__subtitle">Or get started with a new account.</p>
-          <label className="login-page__field" htmlFor="contact">
-            <span className="sr-only">Email or mobile number</span>
-            <input id="contact" name="contact" type="text" inputMode="email" autoComplete="username" placeholder="Email or mobile number" value={contact} onChange={(event) => { setContact(event.target.value); setSubmitted(false) }} aria-invalid={submitted && !contact.trim()} aria-describedby={submitted && !contact.trim() ? 'contact-error' : undefined} />
+          <p className="login-page__eyebrow">WELCOME BACK</p>
+          <h1 id="login-title">Sign in to Netflix</h1>
+          <p className="login-page__intro">Enter your email to continue watching your favorite stories.</p>
+          <label className="login-page__field" htmlFor="email">
+            <span>Email address</span>
+            <input id="contact" name="contact" type="email" inputMode="email" autoComplete="username" placeholder="you@example.com" value={email} onChange={(event) => { setEmail(event.target.value); setSubmitted(false) }} aria-invalid={submitted && !email.trim()} aria-describedby={submitted && !email.trim() ? 'contact-error' : undefined} />
           </label>
-          {submitted && !contact.trim() && <p id="contact-error" className="login-page__error" role="alert">Please enter your email or mobile number.</p>}
+          <label htmlFor="password" className="login-page__field">
+            <span>Password</span>
+            <input id="password" type="password" autoComplete="current-password" placeholder="enter your password" value={password} onChange={(e)=> {
+              setPassword(e.target.value)
+              setSubmitted(false);
+            }}/>
+          </label>
+          {submitted && !email.trim() && <p id="contact-error" className="login-page__error" role="alert">Please enter your email</p>}
           <button className="login-page__continue" type="submit">Continue</button>
         </form>
 
-        <details className="login-page__help">
-          <summary>Get Help <ChevronDown /></summary>
-          <p>Having trouble? Make sure the email or mobile number is linked to your Netflix account.</p>
-        </details>
         <p className="login-page__recaptcha">This page is protected by Google reCAPTCHA to ensure you&apos;re not a bot.</p>
       </section>
     </main>
