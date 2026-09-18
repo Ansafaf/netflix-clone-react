@@ -43,7 +43,7 @@ function Register() {
 
     try{
       await register(values.email.trim(), values.password);
-      navigate(ROUTES.HOME);
+      navigate(ROUTES.USER);
     }
     catch(err){
       console.log(err);

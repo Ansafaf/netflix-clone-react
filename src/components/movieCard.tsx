@@ -21,4 +21,4 @@ function MovieCard({ movie, rank }: MovieCardProps) {
   )
 }
 
-export default MovieCard
+export default MovieCard;

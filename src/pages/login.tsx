@@ -22,7 +22,7 @@ function Login() {
 
     try{
       await login(email.trim(), password);
-      navigate(ROUTES.HOME);
+      navigate(ROUTES.USER);
     }
     catch(err){
       console.log(err);

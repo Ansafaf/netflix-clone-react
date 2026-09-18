@@ -7,6 +7,7 @@ import Register from "../pages/register";
 import Browse from "../components/Browse";
 import { useAuth } from '../context/auth'
 import Loader from "../components/loader";
+import UserHome from "../pages/UserHome";
 
 function ProtectedRoute({ children }: { children: ReactNode }) {
     const { isAuthenticated, isLoading } = useAuth()
@@ -26,7 +27,7 @@ function AppRoutes(){
             <Route path={ROUTES.LOGIN} element={<PublicOnlyRoute><Login /></PublicOnlyRoute>} />
             <Route path={ROUTES.HOME} element={<Home />} />
             <Route path={ROUTES.REGISTER} element={<PublicOnlyRoute><Register /></PublicOnlyRoute>} />
-            <Route path={ROUTES.USER} element={<ProtectedRoute><Browse /></ProtectedRoute>} />
+            <Route path={ROUTES.USER} element={<ProtectedRoute><UserHome /></ProtectedRoute>} />
             {/* <Route path={ROUTES.MOVIES} element={}/> */}
         </Routes>
     )

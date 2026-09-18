@@ -1,0 +1,35 @@
+.movie-row-section {
+  padding: 0 4vw;
+  color: #fff;
+}
+
+.movie-row-section__title {
+  margin: 0 0 14px;
+  font-size: clamp(1.1rem, 1.7vw, 1.45rem);
+  font-weight: 700;
+  letter-spacing: -.01em;
+}
+
+.movie-row {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 5px 3px 18px;
+  scroll-padding-inline: 3px;
+  scroll-snap-type: x proximity;
+  scrollbar-width: thin;
+  scrollbar-color: #777 transparent;
+}
+
+.movie-row::-webkit-scrollbar { height: 6px; }
+.movie-row::-webkit-scrollbar-track { background: transparent; }
+.movie-row::-webkit-scrollbar-thumb { border-radius: 99px; background: #666; }
+
+.movie-row .movie-card {
+  scroll-snap-align: start;
+}
+
+@media (max-width: 520px) {
+  .movie-row-section { padding: 0 16px; }
+  .movie-row { gap: 10px; padding-bottom: 14px; }
+}
