@@ -39,6 +39,7 @@ function Register() {
       setError('Please enter your password');
       return;
     }
+    if (!isValid) return;
 
     try{
       await register(values.email.trim(), values.password);
@@ -75,6 +76,7 @@ function Register() {
           <label htmlFor="register-password">Add a password</label>
           <input id="register-password" type="password" autoComplete="new-password" placeholder="Add a password" value={values.password} onChange={(event) => updateField('password', event.target.value)} aria-invalid={submitted && values.password.length < 6} />
           {submitted && values.password.length < 6 && <p className="register-page__error" role="alert">Your password must contain between 6 and 60 characters.</p>}
+          {error && <p className="register-page__error" role="alert">{error}</p>}
 
           <label className="register-page__consent"><input type="checkbox" /> <span>Please do not email me Netflix special offers.</span></label>
           <button type="submit">Next</button>

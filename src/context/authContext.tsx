@@ -5,10 +5,12 @@ import { auth } from '../services/firebase'
 
 function AuthProvider({ children }: { children: ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   
   useEffect(()=>{
     const unsubscribe = onAuthStateChanged(auth, (user)=>{
       setIsAuthenticated(Boolean(user));
+      setIsLoading(false);
     });
     return unsubscribe; 
   },[]);
@@ -16,18 +18,18 @@ function AuthProvider({ children }: { children: ReactNode }) {
     const userFirebase = await signInWithEmailAndPassword(
       auth, email, password
     );
-    
     return userFirebase.user;
   }
-  const register = async(email: string, password:string)=>{
+  const register = async(email: string, password: string)=>{
     const userFirebase = await createUserWithEmailAndPassword(auth, email, password);
     return userFirebase.user;
   }
+  
   const logout = async() => {
     await signOut(auth);
   }
 
-  return <AuthContext.Provider value={{ isAuthenticated, login,register, logout }}>{children}</AuthContext.Provider>
+  return <AuthContext.Provider value={{ isAuthenticated, isLoading, login,register, logout }}>{children}</AuthContext.Provider>
 }
 
 export { AuthProvider }

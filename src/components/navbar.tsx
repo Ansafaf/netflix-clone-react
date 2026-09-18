@@ -1,4 +1,7 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../context/auth'
+import { ROUTES } from '../constants/routes'
 import './navbar.css'
 
 const navigationItems = ['Home', 'TV Shows', 'Movies', 'New & Popular', 'My List'] as const
@@ -29,6 +32,13 @@ function BellIcon() {
 
 function Navbar({ activeItem = 'Home', onNavigate }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { logout } = useAuth()
+  const navigate = useNavigate()
+
+  const handleLogout = async () => {
+    await logout();
+    navigate(ROUTES.HOME);
+  }
 
   const selectItem = (item: NavigationItem) => {
     onNavigate?.(item)
@@ -74,9 +84,9 @@ function Navbar({ activeItem = 'Home', onNavigate }: NavbarProps) {
         <button className="netflix-navbar__icon-button" type="button" aria-label="Notifications">
           <BellIcon />
         </button>
-        <button className="netflix-navbar__profile" type="button" aria-label="Open profile menu">
+        <button className="netflix-navbar__profile" type="button" aria-label="Sign out" onClick={handleLogout}>
           <span aria-hidden="true">N</span>
-          <span className="netflix-navbar__caret" aria-hidden="true">▾</span>
+          <span className="netflix-navbar__caret">Sign out</span>
         </button>
       </div>
     </header>

@@ -3,12 +3,12 @@ import BenefitsSection, { type Benefit } from '../components/BenefitsSection'
 import FaqSection, { type Faq } from '../components/FaqSection'
 import Footer from '../components/footer'
 import Hero from '../components/Hero'
-import Navbar from '../components/navbar'
 import TrendingSection from '../components/TrendingSection'
 import { useAuth } from '../context/auth'
 import type { Movie } from '../types/movieType'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import { ROUTES } from '../constants/routes'
+import Loader from '../components/loader'
 
 
 const movies: Movie[] = [
@@ -36,10 +36,12 @@ const questions: Faq[] = [
 ]
 
 function Home() {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, isLoading } = useAuth();
+  if (isLoading) return <Loader/>
+  if (isAuthenticated) return <Navigate to={ROUTES.USER} replace />
+
   return <main className="home-page">
     <div className="home-page__site-name">Netflix Clone</div>
-    {isAuthenticated && <Navbar activeItem="Home" />}
     <Hero />
     <div className="home-curve" aria-hidden="true" />
     <div className="home-content">

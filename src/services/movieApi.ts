@@ -9,12 +9,12 @@ const headers = {
 }
 
 export const getMovies = async()=>{
-    const response = await fetch(
+    const response = await (fetch(
         `${base_url}/trending/movie/week`,
         {
             headers
         }
-    )
+    ));
 
     if(!response.ok){
         throw new Error("failed to fetch movies");
