@@ -14,22 +14,17 @@ const initialValues: FormValues = { name: '', email: '', password: '' }
 
 function Register() {
   const [values, setValues] = useState<FormValues>(initialValues);
-  const [submitted, setSubmitted] = useState(false);
-  const [error , setError] = useState('');
+  const [submitted, setSubmitted] = useState<boolean>(false);
+  const [error , setError] = useState<string>('');
   const navigate = useNavigate()
   const {register} = useAuth();
-
-  const updateField = (field: keyof FormValues, value: string) => {
-    setValues((current)=> ({...current, [field]:value}));
-    setSubmitted(false);
-  }
+  
   const isValid = Boolean(values.name.trim()) && /^\S+@\S+\.\S+$/.test(values.email) && values.password.length >= 6;
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setSubmitted(true);
     setError('');
-
 
     if(!values.email.trim()){
       setError('Please enter your email');
@@ -66,15 +61,15 @@ function Register() {
 
         <form className="register-page__form" onSubmit={handleSubmit} noValidate>
           <label htmlFor="register-name">Name</label>
-          <input id="register-name" type="text" autoComplete="name" placeholder="Name" value={values.name} onChange={(event) => updateField('name', event.target.value)} aria-invalid={submitted && !values.name.trim()} />
+          <input id="register-name" type="text" autoComplete="name" placeholder="Name" value={values.name} onChange={(e) => setValues((current)=> ({...current, name:e.target.value}))} aria-invalid={submitted && !values.name.trim()} />
           {submitted && !values.name.trim() && <p className="register-page__error" role="alert">Please enter your name.</p>}
 
           <label htmlFor="register-email">Email</label>
-          <input id="register-email" type="email" autoComplete="email" placeholder="Email" value={values.email} onChange={(event) => updateField('email', event.target.value)} aria-invalid={submitted && !/^\S+@\S+\.\S+$/.test(values.email)} />
+          <input id="register-email" type="email" autoComplete="email" placeholder="Email" value={values.email} onChange={(event) => setValues((current)=> ({...current,email: event.target.value}))} aria-invalid={submitted && !/^\S+@\S+\.\S+$/.test(values.email)} />
           {submitted && !/^\S+@\S+\.\S+$/.test(values.email) && <p className="register-page__error" role="alert">Please enter a valid email address.</p>}
 
           <label htmlFor="register-password">Add a password</label>
-          <input id="register-password" type="password" autoComplete="new-password" placeholder="Add a password" value={values.password} onChange={(event) => updateField('password', event.target.value)} aria-invalid={submitted && values.password.length < 6} />
+          <input id="register-password" type="password" autoComplete="new-password" placeholder="Add a password" value={values.password} onChange={(e) => setValues((current)=> ({...current, password: e.target.value}))} aria-invalid={submitted && values.password.length < 6} />
           {submitted && values.password.length < 6 && <p className="register-page__error" role="alert">Your password must contain between 6 and 60 characters.</p>}
           {error && <p className="register-page__error" role="alert">{error}</p>}
 
@@ -91,4 +86,4 @@ function Register() {
   )
 }
 
-export default Register
+export default Register;

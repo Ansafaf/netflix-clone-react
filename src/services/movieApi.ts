@@ -1,5 +1,7 @@
+import type { Movie } from "../types/movieType";
+import type { movie } from "../types/tmdbType";
 
-const base_url = 'https://my-json-server.typicode.com/horizon-code-academy/fake-movies-api/movies';
+const base_url = 'https://api.themoviedb.org/3';
 
 const token = import.meta.env.VITE_TMDB_TOKEN;
 
@@ -8,9 +10,9 @@ const headers = {
     Authorization:`Bearer ${token}`,
 }
 
-export const getMovies = async()=>{
+export const getMovies = async(category: string): Promise<Movie []> =>{
     const response = await (fetch(
-        `${base_url}/trending/movie/week`,
+        `${base_url}/${category}`,
         {
             headers
         }
@@ -21,6 +23,14 @@ export const getMovies = async()=>{
     }
 
     const data = await response.json();
-    return data.results;
+
+    const movies :Movie[] = data.results.map((movie: movie)=>{
+        return {
+            id: movie.id,
+            title: movie.title,
+            image: `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+        }
+    })
+    return movies;
 }
 

@@ -5,11 +5,13 @@ import { AuthProvider } from './context/authContext';
 function App() {
   return (
     <>
+    
     <AuthProvider>
       <BrowserRouter>
         <AppRoutes />
       </BrowserRouter>
     </AuthProvider>
+
     </>
   )
 }

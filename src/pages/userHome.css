@@ -1,0 +1,235 @@
+.user-home {
+  min-height: 100vh;
+  background: #0a0a0a;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.user-home__hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 540px;
+  padding: 0 4vw 48px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.user-home__hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.82) 0%,
+    rgba(0, 0, 0, 0.52) 32%,
+    rgba(0, 0, 0, 0.2) 62%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+}
+
+.user-home__hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 620px;
+}
+
+.user-home__eyebrow {
+  margin: 0 0 12px;
+  color: #e50914;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.user-home__hero h1 {
+  margin: 0;
+  font-size: clamp(2.4rem, 5vw, 5rem);
+  line-height: 0.97;
+  letter-spacing: -0.06em;
+}
+
+.user-home__hero p {
+  margin: 18px 0 0;
+  max-width: 520px;
+  color: #e5e5e5;
+  font-size: 1.02rem;
+  line-height: 1.5;
+}
+
+.user-home__hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.user-home__hero-actions button {
+  border: 0;
+  border-radius: 4px;
+  padding: 12px 22px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.user-home__hero-actions button:first-child {
+  background: #fff;
+  color: #111;
+}
+
+.user-home__hero-actions button:last-child {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.user-home__content {
+  position: relative;
+  z-index: 2;
+  margin-top: -28px;
+  padding: 0 4vw 64px;
+}
+
+.user-home__top-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 0.9fr;
+  gap: 18px;
+  margin-bottom: 26px;
+}
+
+.user-home__feature-card {
+  padding: 20px 20px 16px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+}
+
+.user-home__feature-card--accent {
+  background: linear-gradient(135deg, rgba(229, 9, 20, 0.32), rgba(255, 255, 255, 0.04));
+}
+
+.user-home__feature-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.user-home__feature-header h3 {
+  margin: 0;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+}
+
+.user-home__pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 6px 10px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.user-home__mini-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.user-home__mini-item {
+  overflow: hidden;
+  border-radius: 14px;
+  background: #1d1d1d;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.user-home__mini-item img {
+  display: block;
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.user-home__mini-item span {
+  display: block;
+  padding: 10px 12px 12px;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.user-home__ranking {
+  display: grid;
+  gap: 12px;
+}
+
+.user-home__ranking-item {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.user-home__ranking-item strong {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(229, 9, 20, 0.9);
+  font-size: 1rem;
+}
+
+.user-home__error {
+  margin: 32px 4vw;
+  padding: 16px 18px;
+  border-radius: 12px;
+  background: rgba(229, 9, 20, 0.12);
+  color: #ffd6d9;
+}
+
+@media (max-width: 760px) {
+  .user-home__hero {
+    min-height: 440px;
+    padding-bottom: 34px;
+  }
+
+  .user-home__top-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .user-home__mini-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .user-home__content,
+  .user-home__hero {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .user-home__hero h1 {
+    font-size: 2.35rem;
+  }
+
+  .user-home__hero p {
+    font-size: 0.92rem;
+  }
+
+  .user-home__mini-list {
+    grid-template-columns: 1fr;
+  }
+}

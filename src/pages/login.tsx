@@ -7,16 +7,16 @@ import { useAuth } from '../context/auth'
 import './login.css'
 
 function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError]= useState('');
-  const { login } = useAuth()
-  const navigate = useNavigate()
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>("");
+  const [submitted, setSubmitted] = useState<boolean>(false);
+  const [error, setError]= useState<string>('');
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = async(event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    setSubmitted(true)
+    event.preventDefault();
+    setSubmitted(true);
     setError('');
     if(!email.trim() || !password.trim()) return
 

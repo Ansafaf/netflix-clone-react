@@ -4,7 +4,6 @@ import { ROUTES } from "../constants/routes";
 import Login from "../pages/login";
 import Home from "../pages/home";
 import Register from "../pages/register";
-import Browse from "../components/Browse";
 import { useAuth } from '../context/auth'
 import Loader from "../components/loader";
 import UserHome from "../pages/UserHome";
