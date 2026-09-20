@@ -3,8 +3,35 @@
   background: #0a0a0a;
   color: #fff;
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+.container {
+  width: min(90%, 1200px);
+  margin: 0 auto;
+}
+.hero {
+  min-height: 520px;
+}
+.movie-card {
+  width: 160px;
+}
+.section {
+  margin-top: 28px;
+}
+.movie-row {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  scrollbar-width: none;
 }
 
+.movie-row::-webkit-scrollbar {
+  display: none;
+}
+
+.section-title {
+  margin-bottom: 14px;
+}
 .user-home__hero {
   position: relative;
   display: flex;
@@ -62,17 +89,20 @@
 .user-home__hero-actions {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 12px;
   margin-top: 24px;
 }
 
-.user-home__hero-actions button {
+.user-home__hero-actions button,
+.user-home__trailer-button {
   border: 0;
-  border-radius: 4px;
+  border-radius: 6px;
   padding: 12px 22px;
   font: inherit;
   font-weight: 700;
   cursor: pointer;
+  transition: transform 180ms ease, opacity 180ms ease, background 180ms ease;
 }
 
 .user-home__hero-actions button:first-child {
@@ -80,24 +110,40 @@
   color: #111;
 }
 
-.user-home__hero-actions button:last-child {
+.user-home__hero-actions button:first-child:hover,
+.user-home__hero-actions button:last-child:hover,
+.user-home__trailer-button:hover {
+  transform: translateY(-1px);
+}
+
+.user-home__hero-actions button:last-child,
+.user-home__trailer-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: rgba(255, 255, 255, 0.12);
   color: #fff;
   border: 1px solid rgba(255, 255, 255, 0.18);
+  text-decoration: none;
+}
+
+.user-home__trailer-button {
+  min-width: 150px;
 }
 
 .user-home__content {
   position: relative;
   z-index: 2;
-  margin-top: -28px;
-  padding: 0 4vw 64px;
+  max-width: 1400px;
+  margin: -20px auto 0;
+  padding: 18px clamp(16px, 4vw, 48px) 64px;
+  box-sizing: border-box;
 }
 
 .user-home__top-grid {
-  display: grid;
-  grid-template-columns: 1.6fr 0.9fr;
-  gap: 18px;
-  margin-bottom: 26px;
+  display: block;
+  width: min(100%, 880px);
+  margin: 32px auto 28px;
 }
 
 .user-home__feature-card {

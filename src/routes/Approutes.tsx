@@ -7,7 +7,7 @@ import Register from "../pages/register";
 import { useAuth } from '../context/auth'
 import Loader from "../components/loader";
 import UserHome from "../pages/UserHome";
-
+import MovieDetail from "../pages/movieDetails";
 function ProtectedRoute({ children }: { children: ReactNode }) {
     const { isAuthenticated, isLoading } = useAuth()
     if (isLoading) return <Loader />
@@ -27,7 +27,8 @@ function AppRoutes(){
             <Route path={ROUTES.HOME} element={<Home />} />
             <Route path={ROUTES.REGISTER} element={<PublicOnlyRoute><Register /></PublicOnlyRoute>} />
             <Route path={ROUTES.USER} element={<ProtectedRoute><UserHome /></ProtectedRoute>} />
-            {/* <Route path={ROUTES.MOVIES} element={}/> */}
+            <Route path={ROUTES.MOVIE} element={<ProtectedRoute><MovieDetail/></ProtectedRoute>}/>
+
         </Routes>
     )
 }

@@ -1,0 +1,216 @@
+.movie-detail-page {
+  min-height: calc(100vh - 68px);
+  background: #0a0a0a;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.movie-detail__hero {
+  position: relative;
+  min-height: 640px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.movie-detail__hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.1), rgba(0,0,0,0.68));
+}
+
+.movie-detail__content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);
+  align-items: end;
+  gap: 32px;
+  width: min(1180px, calc(100% - 48px));
+  min-height: 640px;
+  margin: 0 auto;
+  padding: 56px 0 64px;
+  box-sizing: border-box;
+}
+
+.movie-detail__poster-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.movie-detail__poster {
+  display: block;
+  width: min(100%, 270px);
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 24px;
+  box-shadow: 0 26px 48px rgba(0, 0, 0, 0.4);
+}
+
+.movie-detail__info {
+  max-width: 700px;
+}
+
+.movie-detail__meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  color: #d5d5d5;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.movie-detail__back-button {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.movie-detail__info h1 {
+  margin: 0;
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  line-height: 0.96;
+  letter-spacing: -0.06em;
+}
+
+.movie-detail__tagline {
+  margin: 14px 0 0;
+  color: #ffb4b9;
+  font-size: 1.05rem;
+  font-style: italic;
+}
+
+.movie-detail__genre-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.movie-detail__genre {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  padding: 7px 12px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #f5f5f5;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.movie-detail__overview {
+  margin: 20px 0 0;
+  max-width: 650px;
+  color: #e5e5e5;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.movie-detail__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 26px;
+}
+
+.movie-detail__primary-button,
+.movie-detail__secondary-button {
+  border: 0;
+  border-radius: 8px;
+  padding: 14px 22px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.movie-detail__primary-button {
+  background: #fff;
+  color: #111;
+}
+
+.movie-detail__secondary-button {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.movie-detail__fallback {
+  display: grid;
+  place-items: center;
+  min-height: calc(100vh - 68px);
+  padding: 32px 20px;
+  background: #0a0a0a;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.movie-detail__fallback-box {
+  width: min(520px, 100%);
+  padding: 32px 24px;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 20px;
+  background: rgba(255,255,255,0.03);
+  text-align: center;
+}
+
+.movie-detail__fallback-box h1 {
+  margin: 0 0 12px;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.movie-detail__fallback-box p {
+  margin: 0 0 22px;
+  color: #d3d3d3;
+  line-height: 1.6;
+}
+
+@media (max-width: 760px) {
+  .movie-detail__content {
+    grid-template-columns: 1fr;
+    align-items: center;
+    padding-top: 48px;
+    padding-bottom: 54px;
+    text-align: center;
+  }
+
+  .movie-detail__poster-wrap {
+    justify-content: center;
+  }
+
+  .movie-detail__info {
+    max-width: 100%;
+  }
+
+  .movie-detail__meta-row,
+  .movie-detail__genre-list,
+  .movie-detail__actions {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 520px) {
+  .movie-detail__content {
+    width: min(100% - 28px, 1180px);
+    gap: 22px;
+  }
+
+  .movie-detail__poster {
+    width: min(100%, 220px);
+  }
+
+  .movie-detail__overview {
+    font-size: 0.92rem;
+  }
+}

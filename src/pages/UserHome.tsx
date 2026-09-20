@@ -11,7 +11,6 @@ function UserHome(){
     const [error, setError] = useState<string>("");
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [moviesByCategory, setMoviesByCategory] = useState<MoviesByCategory>({trending: [], popular:[], topRated: []});
-
     const categories = [
     {
         title: "Trending Now",
@@ -54,7 +53,8 @@ function UserHome(){
     const spotlightMovie = {
         id: 1,
         title: 'Midnight City',
-        image: 'https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=1200&q=80'
+        image: 'https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=1200&q=80',
+        trailerUrl: 'https://www.youtube.com/watch?v=ysz5S6PUM-U'
     };
 
 
@@ -65,8 +65,7 @@ function UserHome(){
             {isLoading && <Loader />}
             {error && <p className="user-home__error">{error}</p>}
 
-            {!isLoading && (
-                <>
+                
                     <section
                         className="user-home__hero"
                         style={{ backgroundImage: `url(${spotlightMovie.image})` }}
@@ -80,6 +79,14 @@ function UserHome(){
                             </p>
                             <div className="user-home__hero-actions">
                                 <button type="button">Play</button>
+                                <a
+                                    className="user-home__trailer-button"
+                                    href={spotlightMovie.trailerUrl}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
+                                    Watch trailer
+                                </a>
                                 <button type="button">My List</button>
                             </div>
                         </div>
@@ -93,8 +100,7 @@ function UserHome(){
                         <MovieRow title="Trending now" movies={moviesByCategory.trending} />
                         <MovieRow title="Popular on Netflix" movies={moviesByCategory.popular} />
                     </main>
-                </>
-            )}
+                
         </div>
     )
 }

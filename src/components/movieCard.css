@@ -82,7 +82,45 @@
   text-align: center;
 }
 
+.movie-card__trailer-button {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 2;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  padding: 7px 12px;
+  background: rgba(229, 9, 20, 0.9);
+  color: #fff;
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(229, 9, 20, 0.34);
+  transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+}
+
+.movie-card__trailer-button:hover,
+.movie-card__trailer-button:focus-visible {
+  transform: translateY(-1px);
+  background: rgba(255, 30, 40, 1);
+  box-shadow: 0 10px 22px rgba(229, 9, 20, 0.42);
+}
+
+.movie-card__trailer-button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
 @media (max-width: 520px) {
   .movie-card { flex-basis: 130px; }
   .movie-card__content { right: 10px; bottom: 10px; left: 10px; }
+  .movie-card__trailer-button {
+    right: 8px;
+    bottom: 8px;
+    padding: 6px 9px;
+    font-size: 0.6rem;
+  }
 }

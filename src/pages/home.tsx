@@ -10,13 +10,34 @@ import { Link, Navigate } from 'react-router-dom'
 import { ROUTES } from '../constants/routes'
 import Loader from '../components/loader'
 
-
 const movies: Movie[] = [
-  { id: 1, title: 'Ishq Vishk', image: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=420&q=80' },
-  { id: 2, title: 'Dhamal', image: 'https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=420&q=80' },
-  { id: 3, title: 'Operation', image: 'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=420&q=80' },
-  { id: 4, title: 'Alpha', image: 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=420&q=80' },
-  { id: 5, title: 'Comedy', image: 'https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?auto=format&fit=crop&w=420&q=80' },
+  {
+    id: 1,
+    title: 'Ishq Vishk',
+    image: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=420&q=80',
+    
+  },
+  {
+    id: 2,
+    title: 'Dhamal',
+    image: 'https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=420&q=80',
+  },
+  {
+    id: 3,
+    title: 'Operation',
+    image: 'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=420&q=80',
+  },
+  {
+    id: 4,
+    title: 'Alpha',
+    image: 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=420&q=80',
+
+  },
+  {
+    id: 5,
+    title: 'Comedy',
+    image: 'https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?auto=format&fit=crop&w=420&q=80',
+  },
 ]
 
 const benefits: Benefit[] = [
@@ -41,7 +62,18 @@ function Home() {
   if (isAuthenticated) return <Navigate to={ROUTES.USER} replace />
 
   return <main className="home-page">
-    <div className="home-page__site-name">Netflix Clone</div>
+    <header className="home-header">
+      <a className="home-header__brand" href={ROUTES.HOME} aria-label="Netflix home">
+        Netflix
+      </a>
+
+      <div className="home-header__actions">
+        <Link className="sign-in-button" to={ROUTES.LOGIN}>
+          Sign In
+        </Link>
+      </div>
+    </header>
+
     <Hero />
     <div className="home-curve" aria-hidden="true" />
     <div className="home-content">
