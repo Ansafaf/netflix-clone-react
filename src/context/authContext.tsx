@@ -14,6 +14,7 @@ function AuthProvider({ children }: { children: ReactNode }) {
     });
     return unsubscribe; 
   },[]);
+  
   const login = async(email: string, password: string) => {
     const userFirebase = await signInWithEmailAndPassword(
       auth, email, password
@@ -24,7 +25,7 @@ function AuthProvider({ children }: { children: ReactNode }) {
     const userFirebase = await createUserWithEmailAndPassword(auth, email, password);
     return userFirebase.user;
   }
-  
+
   const logout = async() => {
     await signOut(auth);
   }

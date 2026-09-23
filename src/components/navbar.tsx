@@ -13,7 +13,6 @@ type NavbarProps = {
   onNavigate ?: (item: NavigationItem) => void
 }
 
-
 function Navbar({ activeItem = 'Home', onNavigate }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { logout } = useAuth()

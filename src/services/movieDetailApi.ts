@@ -4,7 +4,7 @@ export type MovieDetailData = {
   image: string
   backdrop: string
   overview: string
-  releaseDate: string
+  releaseDate: string 
   voteAverage: number
   runtime: number
   tagline: string
